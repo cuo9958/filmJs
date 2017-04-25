@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">-->
+    <meta name="viewport" content="width=640,user-scalable=no">
+    <title>测试</title>
+    <style>
+        * {
+            box-sizing:border-box;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+       
+        #game_box {
+            float: left;
+            background:#ccc;
+        }
+    </style>
+    <script src="http://cdn.bootcss.com/pixi.js/4.5.1/pixi.min.js"></script>
+</head>
+<body>
+    <div id="game_border">
+        <canvas id="game_box"></canvas>
+    </div>
+   <script>
+       var resources = [
+           "page0_000.jpg",
+
+       ];
+      
+       var game = {
+           winWidth: 500,          //屏幕宽度
+           winHeight: 500,         //屏幕高度
+           game_border: null,       //游戏界面的外框
+           renderer: null,          //渲染对象
+           stage: null,             //舞台
+
+           //初始化宽高
+           init: function () {
+               // 获取窗口宽度
+               if (window.innerWidth) this.winWidth = window.innerWidth;
+               else if ((document.body) && (document.body.clientWidth)) this.winWidth = document.body.clientWidth;
+               // 获取窗口高度
+               if (window.innerHeight) this.winHeight = window.innerHeight;
+               else if ((document.body) && (document.body.clientHeight)) this.winHeight = document.body.clientHeight;
+               
+               this.game_border = document.getElementById("game_border");
+               //var canvas = document.getElementById("game_box");
+               //canvas.width = this.winWidth;
+               //canvas.height = this.winHeight;
+
+               //this.renderer = canvas.getContext("2d");
+
+               //初始化画板
+               this.renderer = PIXI.autoDetectRenderer(this.winWidth, this.winHeight, { transparent: true, view: document.getElementById("game_box"), backgroundColor: 0x061639 });
+               
+               //初始化舞台
+               this.stage = new PIXI.Container();
+               //game.stage.interactive = true;
+               
+               console.log(this);
+               //启动loading项
+
+               let textureArray = [];
+               for (var i = 0; i < 35; i++) {
+                   if (i < 10) {
+                       let texture = PIXI.Texture.fromImage("page0_00" + i + ".jpg");
+                       textureArray.push(texture);
+                   } else {
+                       let texture = PIXI.Texture.fromImage("page0_0" + i + ".jpg");
+                       textureArray.push(texture);
+                   }
+               }
+
+               let mc = new PIXI.extras.AnimatedSprite(textureArray);
+               mc.loop = true;
+               mc.animationSpeed = 0.14;
+               
+               this.stage.addChild(mc);
+
+               console.log(mc);
+               mc.play();
+               var that = this;
+               function animate() {
+                   that.renderer.render(that.stage);
+                   requestAnimationFrame(animate);
+               }
+               requestAnimationFrame(animate);
+           },
+           //加载资源
+           loadImage: function () {
+               console.log("加载页面");
+               var loadMask = new PIXI.Container();
+               var txt = new PIXI.Text("正在加载资源:0%", { fontFamily: "Arial", fontSize: 32, fill: "white" });
+               txt.x = game.winWidth / 2 - txt.width / 2;
+               txt.y = game.winHeight / 2 - txt.height / 2;
+               loadMask.addChild(txt);
+               game.stage.addChild(loadMask);
+               //加载事件
+               function loadProgressHandler(loader, resource) {
+                   txt.text = "正在加载资源:" + loader.progress + "%";
+                   console.log("loading: " + resource.url);
+                   console.log("progress: " + loader.progress + "%");
+               }
+               //开始加载
+               PIXI.loader.add("my", "images/my.jpg")
+                   .add("cat", "images/cat.png")
+                   .add("bg", "images/timg.jpg")
+                   .on("progress", loadProgressHandler)
+                   .load(game.connect);
+           },
+       }
+
+       window.onload = function () {
+           game.init();
+          
+       }
+   </script>
+    <script>
+        //TODO:
+        //1.说明资源列表
+        //2.隔段加载动画素材 game。load
+        //3.运行 game。run
+        //4.特殊：转场  game。next
+    </script>
+</body>
+</html>
