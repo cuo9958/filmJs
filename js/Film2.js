@@ -1,6 +1,3 @@
-//=========日志工具=========
-var log = function () { };
-log.apply(console.log, null);
 //场景的初始化参数默认值
 var StageOption = {
     width: 640,
@@ -227,6 +224,9 @@ var FilmStage = (function () {
         switch (this.options.turnOut) {
             case "left":
                 end = { x: -this.options.width, y: 0 };
+                break;
+            case "right":
+                end = { x: this.options.width, y: 0 };
                 break;
             default:
                 end = { x: 0, y: 0 };

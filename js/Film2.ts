@@ -2,13 +2,14 @@
 declare var PIXI: any;
 declare var TWEEN: any;
 
-//=========日志工具=========
-var log = function () { };
-log.apply(console.log, null);
-//===========================
 //场景的接口
 interface iStage {
+    //事件
+    onComplete: () => void;
+    //方法
     ready: (container) => void;
+    play: () => void;
+    end: () => void;
 }
 //场景的初始化参数
 interface iStageOption {
@@ -35,12 +36,6 @@ let StageOption = {
     onStart: function () { },
     onEnd: function () { },
 }
-//自定义图片对象的属性
-interface HTMLImageElement {
-    index: number;
-    isSuccess: boolean;
-}
-
 
 //插件对象
 class FilmJS {
@@ -188,7 +183,6 @@ class FilmStage implements iStage {
 
     constructor(opt: iStageOption) {
         this.options = FilmJS.extend(opt, StageOption);
-
     }
     private _setOffset() {
         switch (this.options.turnIn) {
@@ -259,6 +253,9 @@ class FilmStage implements iStage {
         switch (this.options.turnOut) {
             case "left":
                 end = { x: -this.options.width, y: 0 }
+                break;
+            case "right":
+                end = { x: this.options.width, y: 0 }
                 break;
             default:
                 end = { x: 0, y: 0 }
