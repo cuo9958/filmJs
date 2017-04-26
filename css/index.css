@@ -1,0 +1,206 @@
+@charset "utf-8";
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#game_box {
+    float: left;
+    background: #ccc;
+}
+
+.orientation_set {
+    display: none
+}
+
+@media screen and (orientation:portrait) {
+    .orientation_set {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        color: #fff;
+        width: 100%;
+        height: 100%;
+        background: #397ddb;
+        text-align: center;
+        display: -webkit-box;
+        -weibit-box-pack: center;
+        -webkit-box-align: center;
+        z-index: 999;
+        font-size: 14px;
+        line-height: 2em;
+        font-family: "Microsoft YaHei"
+    }
+    .orientation_set img {
+        display: inline-block;
+        -webkit-animation: zhuan 1.5s .3s infinite
+    }
+    .orientation_set>div {
+        width: 100%
+    }
+}
+
+@-webkit-keyframes zhuan {
+    0% {
+        -webkit-transform: rotate(0);
+        opacity: 1
+    }
+    50% {
+        -webkit-transform: rotate(-90deg);
+        opacity: 1
+    }
+    100% {
+        -webkit-transform: rotate(0);
+        opacity: 1
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.start {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../images/startbg.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: #fff;
+}
+
+.start p:nth-child(1) {
+    font-size: 22px;
+    padding-top: 5%;
+}
+
+.start-btn {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    margin-left: -85px;
+    width: 170px;
+    height: 40px;
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    -webkit-animation: shake 1.2s infinite;
+    animation: shake 1.2s infinite;
+}
+
+@-webkit-keyframes shake {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    4% {
+        -webkit-transform: rotate(4deg);
+        transform: rotate(4deg)
+    }
+    8% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    12% {
+        -webkit-transform: rotate(-4deg);
+        transform: rotate(-4deg)
+    }
+    16% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    20% {
+        -webkit-transform: rotate(4deg);
+        transform: rotate(4deg)
+    }
+    24% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    28% {
+        -webkit-transform: rotate(-4deg);
+        transform: rotate(-4deg)
+    }
+    32% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    to {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+}
+
+@keyframes shake {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    4% {
+        -webkit-transform: rotate(4deg);
+        transform: rotate(4deg)
+    }
+    8% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    12% {
+        -webkit-transform: rotate(-4deg);
+        transform: rotate(-4deg)
+    }
+    16% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    20% {
+        -webkit-transform: rotate(4deg);
+        transform: rotate(4deg)
+    }
+    24% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    28% {
+        -webkit-transform: rotate(-4deg);
+        transform: rotate(-4deg)
+    }
+    32% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    to {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+}
+
+.end {
+    /*display: none;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../images/endbg.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: #fff;
+}
+.video{
+    padding-top: 2%;
+}
+.end p{
+    font-size: 22px;
+    padding-top: 5%;
+}

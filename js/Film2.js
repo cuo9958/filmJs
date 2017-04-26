@@ -16,7 +16,7 @@ var FilmJS = (function () {
         //画板的宽
         this.winWidth = 640;
         //画板的高
-        this.winHeight = 1136;
+        this.winHeight = 360;
         //画板的引擎对象
         this.renderer = null;
         //画板的容器
@@ -37,6 +37,8 @@ var FilmJS = (function () {
             this.winHeight = window.innerHeight;
         else if ((document.body) && (document.body.clientHeight))
             this.winHeight = document.body.clientHeight;
+            console.log(this.winWidth);
+            console.log(this.winHeight);
         //初始化引擎
         this.renderer = PIXI.autoDetectRenderer(this.winWidth, this.winHeight, {
             transparent: true,
