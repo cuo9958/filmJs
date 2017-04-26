@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">-->
+    <meta name="viewport" content="width=640,user-scalable=no">
+    <title>测试</title>
+    <style>
+        * {
+            box-sizing:border-box;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #game_box {
+            float: left;
+            background:#ccc;
+        }
+    </style>
+    <!--<script src="http://cdn.bootcss.com/pixi.js/4.5.1/pixi.min.js"></script>-->
+    <script src="js/pixi.min.js"></script>
+    <script src="js/Tween.min.js"></script>
+</head>
+<body>
+    <div id="game_border">
+        <canvas id="game_box"></canvas>
+    </div>
+
+    <script src="js/Film2.js"></script>
+   <script>
+       var resource = [];
+       for (var i = 0; i < 15; i++) {
+           var index = i < 10 ? "0" + i : i;
+           resource.push("images/page0_0" + index + ".jpg");
+       }
+       var resource2 = [];
+       for (var i = 0; i < 15; i++) {
+           resource2.push("images/" + i + ".jpg");
+       }
+       window.onload = function () {
+           var film = new FilmJS("game_box");
+           film.onEnd = function () {
+               console.log("所有表演结束");
+           }
+           var stage1 = new FilmStage({
+               resource: resource,
+               width: 640,
+               height: 1136,
+               name: "场景1",
+               turnOut: "left",
+               onStart: function () {
+                   console.log("自定义开始样式");
+               }
+           });
+           var stage2 = new FilmStage({
+               resource: resource2,
+               width: 640,
+               height: 1136,
+               name: "场景2",
+               turnIn:"right"
+           });
+           film.add(stage1);
+           film.add(stage2);
+           film.start();
+           setTimeout(function () {
+               film.action();
+           },2000);
+       }
+       
+   </script>
+    
+</body>
+</html>
