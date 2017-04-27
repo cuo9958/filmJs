@@ -1,0 +1,23 @@
+{
+  "name": "filmjs",
+  "version": "1.0.0",
+  "description": "filmjs",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^2.2.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuo9958/filmJs.git"
+  },
+  "author": "zixiao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cuo9958/filmJs/issues"
+  },
+  "homepage": "https://github.com/cuo9958/filmJs#readme"
+}
