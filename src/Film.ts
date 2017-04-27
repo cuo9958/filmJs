@@ -212,6 +212,8 @@ class FilmStage implements iStage {
         }
 
         this.clip = new PIXI.extras.AnimatedSprite(list);
+        this.clip.width = this.options.width;
+        this.clip.height = this.options.height;
         this._setOffset();
         this.clip.loop = false;
         this.clip.animationSpeed = this.options.speed;
