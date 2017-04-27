@@ -1,16 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Cache-Control" content="no-cache">
     <!--<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">-->
-     <meta name="viewport" content="height=640,user-scalable=no"> 
+    <meta name="viewport" content="height=640,user-scalable=no">
     <title>测试</title>
     <link rel="stylesheet" href="/css/index.css">
     <style>
         .end {
-            display:none;
+            display: none;
         }
     </style>
     <script src="pixi.min.js"></script>
@@ -39,14 +39,17 @@
     </section>
     <script src="../src/Film.js"></script>
     <script>
-        var resource = [];
+        var resource = [],
+            resource2 = [],
+            resource3 = [],
+            resource4 = [];
         for (var i = 0; i < 40; i++) {
             resource.push("../images/stageone/pageone_" + i + ".jpg");
-        }
-        var resource2 = [];
-        for (var i = 0; i < 40; i++) {
             resource2.push("../images/stagetwo/pageone_" + i + ".jpg");
+            resource3.push("../images/stagethree/pageone_" + i + ".jpg");
+            resource4.push("../images/stagefour/pageone_" + i + ".jpg");
         }
+
         window.onload = function() {
             var film = new FilmJS("game_box");
             film.onEnd = function() {
@@ -67,10 +70,29 @@
                 width: 1136,
                 height: 640,
                 name: "场景2",
-                turnIn: "right"
+                turnIn: "right",
+                turnOut: "left"
+            });
+            var stage3 = new FilmStage({
+                resource: resource3,
+                width: 1136,
+                height: 640,
+                name: "场景3",
+                turnIn: "right",
+                turnOut: "left"
+            });
+            var stage4 = new FilmStage({
+                resource: resource4,
+                width: 1136,
+                height: 640,
+                name: "场景4",
+                turnIn: "right",
+                turnOut: "left"
             });
             film.add(stage1);
             film.add(stage2);
+            film.add(stage3);
+            film.add(stage4);
             film.start();
             setTimeout(function() {
                 film.action();
