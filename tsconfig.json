@@ -1,16 +1,14 @@
 {
   "compilerOptions": {
-    "noImplicitAny": false,
-    "noEmitOnError": true,
-    "removeComments": false,
-    "sourceMap": true,
-    "target": "es5"
+    "sourceMap": false,
+    "target": "es5",
+    "watch": true //在监视模式下运行编译器。会监视输出文件，在它们改变时重新编译。
   },
   "exclude": [
-    "node_modules",
-    "wwwroot"
+    "node_modules"
   ],
-  "files": [
-    "src/*.ts"
+  "include": [
+    "src/*"
   ]
+  
 }
