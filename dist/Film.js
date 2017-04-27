@@ -1,3 +1,6 @@
+/**
+ * 生成的结果
+ */
 //场景的初始化参数默认值
 var StageOption = {
     width: 640,
@@ -16,7 +19,7 @@ var FilmJS = (function () {
         //画板的宽
         this.winWidth = 640;
         //画板的高
-        this.winHeight = 360;
+        this.winHeight = 1136;
         //画板的引擎对象
         this.renderer = null;
         //画板的容器
@@ -37,8 +40,6 @@ var FilmJS = (function () {
             this.winHeight = window.innerHeight;
         else if ((document.body) && (document.body.clientHeight))
             this.winHeight = document.body.clientHeight;
-            console.log(this.winWidth);
-            console.log(this.winHeight);
         //初始化引擎
         this.renderer = PIXI.autoDetectRenderer(this.winWidth, this.winHeight, {
             transparent: true,
@@ -246,4 +247,4 @@ var FilmStage = (function () {
     };
     return FilmStage;
 }());
-//# sourceMappingURL=Film2.js.map
+//# sourceMappingURL=Film.js.map

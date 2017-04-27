@@ -4,5 +4,11 @@
     "inputFiles": [
       "js/Film2.js"
     ]
+  },
+  {
+    "outputFileName": "dist/Film.min.js",
+    "inputFiles": [
+      "dist/Film.js"
+    ]
   }
 ]

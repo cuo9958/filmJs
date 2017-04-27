@@ -9,11 +9,12 @@
     <title>测试</title>
     <link rel="stylesheet" href="/css/index.css">
     <style>
-
+        .end {
+            display:none;
+        }
     </style>
-    <!--<script src="http://cdn.bootcss.com/pixi.js/4.5.1/pixi.min.js"></script>-->
-    <script src="js/pixi.min.js"></script>
-    <script src="js/Tween.min.js"></script>
+    <script src="pixi.min.js"></script>
+    <script src="Tween.min.js"></script>
 </head>
 
 <body>
@@ -36,15 +37,15 @@
             <iframe frameborder="0" width="320" height="233" src="https://v.qq.com/iframe/player.html?vid=k0395z3t486&tiny=0&auto=0" allowfullscreen></iframe>
         </div>
     </section>
-    <script src="js/Film.min.js"></script>
+    <script src="../dist/Film.min.js"></script>
     <script>
         var resource = [];
         for (var i = 0; i < 40; i++) {
-            resource.push("images/stageone/pageone_" + i + ".jpg");
+            resource.push("../images/stageone/pageone_" + i + ".jpg");
         }
         var resource2 = [];
         for (var i = 0; i < 40; i++) {
-            resource2.push("images/stagetwo/pageone_" + i + ".jpg");
+            resource2.push("../images/stagetwo/pageone_" + i + ".jpg");
         }
         window.onload = function() {
             var film = new FilmJS("game_box");
