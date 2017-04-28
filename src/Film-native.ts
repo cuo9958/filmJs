@@ -210,15 +210,24 @@ namespace FilmJS2 {
                 container.drawImage(that.resource[0], that.x, that.y, that.width, that.height);
             });
         }
+        private _play() {
+
+        }
+
         //播放
         play() {
             console.log("播放：" + this.options.name);
             let that = this;
-            let animation = new TWEEN.Tween({ x: this.x, y: this.y })
-                .to({ x: 0, y: 0 }, 1000).onUpdate(function () {
-                    console.log(this.x);
-                })
-                .to({x:100,y:100},1000).start();
+            if (this.x != 0 || this.y != 0) {
+                let animation = new TWEEN.Tween({ x: this.x, y: this.y })
+                    .to({ x: 0, y: 0 }, 1000).onComplete(function () {
+                        that._play();
+                    })
+                    .start();
+            } else {
+                that._play();
+            }
+
 
             //this.clip.onComplete = this.onComplete;
             //if (this.clip.x != 0 || this.clip.y != 0) {
